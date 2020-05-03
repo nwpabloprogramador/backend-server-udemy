@@ -1,10 +1,21 @@
 // Requires 
 // cargar libreria
 var express = require('express');
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'); // buscar el npm install en internet
+var bodyParser = require('body-parser') // buscar el npm install en internet
 
-// declarar variables
+// inicializar variables
 var app = express();
+
+// body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+// importar rutas
+var appRoutes = require('./routes/app');
+var usuarioRoutes = require('./routes/usuario');
+var loginRoutes = require('./routes/login');
 
 // conexion a la base de datos
 mongoose.connect('mongodb://localhost:27017/hospitalDB', (err, res) => {
@@ -14,12 +25,10 @@ mongoose.connect('mongodb://localhost:27017/hospitalDB', (err, res) => {
 
 });
 
-// importar rutas
-var appRoutes = require('./routes/app');
-var usuarioRoutes = require('./routes/usuario');
 
 // RUTAS
 app.use('/usuario', usuarioRoutes);
+app.use('/login', loginRoutes);
 app.use('/', appRoutes);
 
 // escuchar peticiones

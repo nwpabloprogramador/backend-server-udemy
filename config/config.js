@@ -1,0 +1,1 @@
+module.exports.SEED = 'esto-se-llama-semilla';
