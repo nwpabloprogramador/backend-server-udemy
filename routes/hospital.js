@@ -112,6 +112,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var hospital = new Hospital({
         nombre: body.nombre,
+        img: '',
 
     });
 

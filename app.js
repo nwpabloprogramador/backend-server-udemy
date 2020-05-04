@@ -20,6 +20,7 @@ var hospitalRoutes = require('./routes/hospital');
 var medicoRoutes = require('./routes/medico');
 var busquedaRoutes = require('./routes/busqueda');
 var uploadRoutes = require('./routes/upload');
+var imagenesRoutes = require('./routes/imagenes');
 
 // conexion a la base de datos
 mongoose.connect('mongodb://localhost:27017/hospitalDB', (err, res) => {
@@ -29,8 +30,16 @@ mongoose.connect('mongodb://localhost:27017/hospitalDB', (err, res) => {
 
 });
 
+// server index config , esta configuracion permite 
+// tener acceso a la carpeta uploads desde el GET
+
+// var serveIndex = require('serve-index'); // npm install serve-index --save
+// app.use('/uploads', serveIndex(__dirname + '/uploads'));
+// app.use(express.static(__dirname + '/'))
+
 
 // RUTAS
+app.use('/img', imagenesRoutes);
 app.use('/medico', medicoRoutes);
 app.use('/hospital', hospitalRoutes);
 app.use('/usuario', usuarioRoutes);
