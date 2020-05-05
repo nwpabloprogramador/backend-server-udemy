@@ -7,7 +7,7 @@ app.get('/', (req, res, next) => {
 
     res.status(200).json({
         ok: true,
-        mensaje: 'Petición realizada correctamente'
+        mensaje: 'Llegaste bien'
     })
 
 }); // ( request , response, next ) next que continue
